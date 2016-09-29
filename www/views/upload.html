@@ -1,0 +1,19 @@
+<header>
+	<h1>Neues Video hochladen</h1>
+</header>
+<form action="{{paths.videoUploadPath}}" method="POST" enctype="multipart/form-data" ng-submit="backToList()">
+	
+	<label for="title">Video-Titel* (max. 50 Zeichen):</label>
+	<div class="form-group">
+		<input type="text" id="title" name="title" class="form-control" placeholder="Video-Titel" maxlength="50" required ng-model="upload.title">
+	</div>
+	<label for="desc">Video-Beschreibung (max. 300 Zeichen):</label>
+	<div class="form-group">
+		<textarea id="desc" name="desc" class="form-control" placeholder="Video-Beschreibung" maxlength="300" ng-model="upload.desc"></textarea>
+	</div>
+	<label for="video">Datei hochladen* (mp4, max. ? MB):</label>
+	<div class="form-group">
+		<input type="file" id="video" name="video" class="form-control" file-model="upload.file" required>
+	</div>
+	<button type="submit" class="btn btn-default">Submit</button>
+</form>

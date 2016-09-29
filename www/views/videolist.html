@@ -1,0 +1,32 @@
+<header class="pageheader">
+	<h1>Videos</h1>
+</header>
+<div id="listSearch" class="row">
+	<div class="col-md-6">
+		<label><span class="glyphicon glyphicon-search" aria-hidden="true"></span> </label>
+		<input id="search" type="text" ng-model="searchFor" placeholder="Suchbegriff eingeben">
+	</div>
+	<div class="col-md-6">
+		<label for="sort">Liste sortieren nach: </label>
+		<select ng-model="sortBy" class="selectpicker">
+			<option value="">- auswählen -</option>
+			<option value="video_title">Titel</option>
+			<option value="video_rating">Bewertung</option>
+			<option value="video_upload">Datum</option>
+		</select>
+	</div>
+</div>
+
+<div ng-repeat="video in videoList | orderBy : sortBy | filter : searchFor">
+
+	<h3>
+		<a href="#/video/{{video.video_id}}">{{video.video_title}}</a>
+	</h3>
+	<img class="thumbnail thumbnail-list" src="{{getThumbSrc(video.thumbnail_file)}}" alt="{{video.video_title}}_titelbild">
+	<p>{{video.video_desc}}</p>
+	<p>{{video.video_file}}</p>
+	<small>Hochgeladen am {{video.video_upload_date}}</small>
+	<div class="admin-area" ng-if="user.isAdmin">
+		<a href="#/edit-video/{{video.video_id}}" role="button" class="btn btn-primary">Video bearbeiten</a>
+	</div>
+</div>

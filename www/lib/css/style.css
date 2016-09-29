@@ -1,0 +1,33 @@
+/* line 1, C:/wamp/www/video-cms/www/lib/scss/_general.scss */
+body {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+/* line 5, C:/wamp/www/video-cms/www/lib/scss/_general.scss */
+.form-control {
+  height: auto;
+}
+
+/* line 8, C:/wamp/www/video-cms/www/lib/scss/_general.scss */
+a {
+  cursor: pointer;
+}
+
+/* line 1, C:/wamp/www/video-cms/www/lib/scss/_content.scss */
+.thumbnail-main {
+  width: 90%;
+}
+
+/* line 4, C:/wamp/www/video-cms/www/lib/scss/_content.scss */
+.thumbnail-list {
+  max-width: 300px;
+  max-height: 200px;
+}
+
+/* line 8, C:/wamp/www/video-cms/www/lib/scss/_content.scss */
+.admin-area {
+  background-color: #ddd;
+}
+
+/*# sourceMappingURL=../css/style.map */

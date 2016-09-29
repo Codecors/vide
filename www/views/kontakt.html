@@ -1,0 +1,28 @@
+<header class="page-header">
+	<h1>Kontaktformular</h1>
+</header>
+<form>
+	<div class="form-group">
+		<label for="fname">Vorname: </label>
+		<input type="text" class="form-control" id="fname" name="fname" placeholder="Vorname" ng-model="contact.fname">
+	</div>
+	<div class="form-group">
+		<label for="lname">Nachname: </label>
+		<input type="text" class="form-control" id="lname" name="lname" placeholder="Nachname" ng-model="contact.lname">
+	</div>
+	<div class="form-group">
+		<label for="email">Email: </label>
+		<input type="email" class="form-control" id="email" name="email" placeholder="Email-Adresse" ng-model="contact.email" required>
+	</div>
+		<div class="form-group">
+		<label for="about">Betreff: </label>
+		<input type="about" class="form-control" id="about" name="about" placeholder="Betreff" ng-model="contact.about" required>
+	</div>
+	<div class="form-group">
+		<label for="message">Nachricht: </label>
+		<textarea type="message" class="form-control" id="message" name="message" ng-model="contact.message" required></textarea></textarea>
+	</div>
+	<div class="form-group">
+		<button type="button" class="btn btn-primary" ng-click="submitContactForm()">Absenden</button>
+	</div>
+</form>

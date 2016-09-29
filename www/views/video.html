@@ -1,0 +1,20 @@
+<header class="pageheader">
+<h1>{{videoData.video_title}}</h1>
+</header>
+
+<img class="thumbnail thumbnail-main" src="{{thumbSrc}}" alt="{{videoData.video_title}}_titelbild">
+<p>
+	{{videoData.video_desc}}
+</p>
+<small>Hochgeladen am {{videoData.video_upload_date}}</small>
+ <div class="admin-area" ng-if="user.isAdmin">
+	<a href="#/edit-video/{{videoData.video_id}}" role="button" class="btn btn-primary">Video bearbeiten</a>
+	<button type="button" class="btn btn-danger" ng-click="deleteVideo()">Video löschen</button>
+	<div ng-repeat="msg in messages">
+		<div ng-class="msg.class">
+			{{msg.text}}
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		</div>
+	</div>
+</div>
+<a href="http://localhost/video-cms/www/#/videos" role="button" class="btn btn-default">zur Video-Übersicht</a>

@@ -1,0 +1,30 @@
+<h1>
+	{{videoData.video_title}}
+	<small>Titelbild ändern</small>
+</h1>
+<section>
+	<img class="thumbnail thumbnail-list" src="{{thumbSrc}}" alt="{{videoData.video_title}}_titelbild">
+	<header>
+		<h3>Neues Bild hochladen</h3>
+	</header>
+	<form action="{{paths.thumbnailUploadPath}}" method="POST" enctype="multipart/form-data">
+		<input type="hidden" class="form-control" name="video_id" value="{{videoData.video_id}}">
+		<label for="thumbnail">Bilddatei auswählen (max. ? MB)</label>
+		<div class="form-group">
+			<input class="form-control" type="file" id="thumbnail"name="thumbnail" required> 
+		</div>
+		<div class="form-group">
+			<label>Achtung: Das aktuelle Bild wird dabei gelöscht</label>
+			<input type="submit" class="form-control" value="Bild hochladen">
+		</div>
+	</form>
+</section>
+<section>
+	<header>
+		<h3>Aktuelles Bild löschen</h3>
+	</header>
+	<p>Video ohne Bild anzeigen</p>
+	<p>
+		<button type="button" class="btn btn-danger" ng-click="deleteThumbnail()">Bild Löschen</button>
+	</p>
+</section>
