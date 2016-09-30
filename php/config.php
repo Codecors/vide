@@ -27,14 +27,15 @@ $vid_path = ROOT . 'www/lib/videos/';
 define('VIDEOS_DIR', $vid_path);
 
 /**
- * video file folder path
+ * thumbnail img file folder path
  */
 $thumbnail_path = ROOT . 'www/lib/thumbnails/';
 define('THUMBS_DIR', $thumbnail_path);
 
 //contact form email address
 
-//contact form token
+//form token
+define("FORM_TOKEN", "0c2d7970ed846b6596925b6ce2dd5b9c");
 
 //session auth salt
 define("AUTH_SALT", "fbb5058c47da856b6501160ad0753bba");

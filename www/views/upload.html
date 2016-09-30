@@ -2,7 +2,6 @@
 	<h1>Neues Video hochladen</h1>
 </header>
 <form action="{{paths.videoUploadPath}}" method="POST" enctype="multipart/form-data" ng-submit="backToList()">
-	
 	<label for="title">Video-Titel* (max. 50 Zeichen):</label>
 	<div class="form-group">
 		<input type="text" id="title" name="title" class="form-control" placeholder="Video-Titel" maxlength="50" required ng-model="upload.title">

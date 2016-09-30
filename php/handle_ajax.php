@@ -47,7 +47,7 @@ if(!empty($_POST)){
 			break;
 		case 'getVideoList':
 			$video = new Video();
-			$data = $video->get_video_list($is_logged_in);
+			$data = $video->get_video_list($is_admin);
 			$result = ($data != false);
 			$messages = $video->all_messages;
 			break;

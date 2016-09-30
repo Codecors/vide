@@ -3,17 +3,6 @@
 class Video extends Main{
 	
 	/**
-	 * inherits errors array from Main class
-	 */
-	public function __construct(){
-	
-		parent::__construct();
-	
-	}
-	
-/* ===================================================================================== */	
-	
-	/**
 	 * Validates a video id
 	 * @param mixed $video_id
 	 * @return boolean
@@ -24,7 +13,6 @@ class Video extends Main{
 			return true;
 		}
 		else{
-			$this->add_error("no");
 			return false;
 		}	
 	}
@@ -126,17 +114,17 @@ class Video extends Main{
 
 	/**
 	 * gets data for all videos or all public videos from db
-	 * @param boolean $login The user's login status
-	 * @return array
+	 * @param boolean $is_admin
+	 * @return string
 	 */
-	public function get_video_list($login){
+	public function get_video_list($is_admin){
 		
 		$db = new DB();
 		
-		if($login == "true"){
+		if($is_admin){
 			$query = "SELECT * FROM videos";
 			$params = [];
-		}else if($login == false){
+		}else{
 			$query ="SELECT * FROM videos WHERE video_public = ?";
 			$params = ["1"];
 		}
@@ -166,14 +154,15 @@ class Video extends Main{
 	
 	/**
 	 * Updates db entry for a video
-	 * @param $new_data The edit form data sent via ajax
+	 * @param array $new_data The edit form data sent via ajax
+	 * @param boolean $is_admin
 	 * @return boolean 
 	 */
-	public function edit_video($new_data, $is_admin){
-		
+	public function edit_video($new_data,  $is_admin){
+				
 		if(!$is_admin){
 			$this->add_error("Administratorzugang benötigt");
-			return false;	
+			return false;
 		}else{
 		
 			$valid = $this->validate_video_data($new_data);
@@ -214,9 +203,10 @@ class Video extends Main{
 	/**
 	 * Changes the rating for a video
 	 * @param array $input Form input array
+	 * @param boolean $is_logged_in
 	 * @return boolean
 	 */	
-	public function change_rating($input){
+	public function change_rating($input, $is_logged_in){
 		
 		if(!$is_logged_in){
 			$this->add_error("Login benötigt");
@@ -254,8 +244,11 @@ class Video extends Main{
 /* ===================================================================================== */
 	
 	/**
-	 * Deletes a video (video file, thumbnail file and database entry) 
-	 * @param mixed $video_id
+	 * Deletes a video (video file, thumbnail file and database entry)
+	 * @param mixed $video_id 
+	 * @param string $video_file File location
+	 * @param string $thumbnail_file File location
+	 * @param boolean $is_admin
 	 * return boolean
 	 */
 	public function delete_video($video_id, $video_file, $thumbnail_file, $is_admin){
@@ -302,6 +295,7 @@ class Video extends Main{
 	 * Uploads a thumbnail image to the img directory
 	 * @param array $new_file $_FILES array for the new thumbnail
 	 * @param mixed $video_id
+	 * @param boolean $is_admin
 	 * @return boolean
 	 */
 	public function upload_thumbnail($new_file, $video_id, $is_admin){
@@ -309,8 +303,7 @@ class Video extends Main{
 		if(!$is_admin){
 			$this->add_error("Administratorzugang benötigt");
 			return false;
-		}else{
-				
+		}else{		
 			$file = $new_file['thumbnail'];
 			
 			$file_name = $file['name'];
@@ -463,12 +456,12 @@ class Video extends Main{
 				
 			$delete_old = $this->delete_file($file, "");
 			
-			if(!$delete){
+			if(!$delete_old){
 				$this->add_error("Löschen des alten Bildes fehlgeschlagen");
 				return false;
 			}else{
 				
-				$add_new = $this->upload_thumbnail($file, "just_thumbnail", $video_id);
+				$add_new = $this->upload_thumbnail($file, $video_id, true);
 				
 				if(!$add_new){
 					$this->add_error("Hochladen des neuen Bildes fehlgeschlagen");

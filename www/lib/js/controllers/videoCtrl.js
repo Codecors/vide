@@ -26,6 +26,7 @@ angular.module("main").controller("videoCtrl", function($scope, $location, $wind
 			else{
 				$scope.videoData = JSON.parse(result.data);
 				$scope.thumbSrc = paths.thumbsDir + $scope.videoData['thumbnail_file'];
+				console.log($scope.thumbSrc);
 				$scope.isAdmin = result.isAdmin;
 				$scope.msg.messages = result.messages;
 			}

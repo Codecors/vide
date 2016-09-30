@@ -9,7 +9,6 @@ $is_admin = $user->is_admin();
 if(!empty($_POST) && !empty($_FILES)){
 	
 	$id = $_POST['video_id'];
-	
 	$input = new video();
 	
 	$file_upload = $input->upload_thumbnail($_FILES, $id, $is_admin);

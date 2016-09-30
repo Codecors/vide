@@ -4,12 +4,13 @@
 		<small>Videodaten bearbeiten</small>
 	</h1>
 </header>
+<img class="thumbnail thumbnail-main" src="{{thumbSrc}}" alt="{{videoData.video_title}}_titelbild">
 <form>
 	<div class="form-group">
 		<label for="title">Video-Titel: </label>
 		<input class="form-control" type="text" maxlength="50" ng-model="videoData.video_title">
 	</div>
-		<div class="form-group">
+	<div class="form-group">
 		<label for="desc">Video-Beschreibung: </label>
 		<textarea class="form-control" maxlength="300" ng-model="videoData.video_desc"></textarea>
 	</div>

@@ -20,7 +20,7 @@ class User extends Main{
 		)));
 		
 		$valid_pw = filter_var($password, FILTER_VALIDATE_REGEXP, array("options" => array(
-				"regexp" => "/[a-zA-Z0-9_äöüß_]{8,40}/"
+				"regexp" => "/[a-zA-Z0-9_äöüß]{8,40}/"
 		)));
 		
 		if(!$valid_username){
@@ -87,7 +87,11 @@ class User extends Main{
 
 /* ===================================================================================== */
 	 
-	
+	/**
+	 * Sets the $_SESSION variables during login
+	 * @param string $username
+	 * @param string $user_type
+	 */
 	private function set_user_session($username, $user_type){
 		
 		$session_id = uniqid('', true);
@@ -120,12 +124,8 @@ class User extends Main{
 		
 		$valid_input = $this->validate_user_info($username, $pw);
 		
-		if(!$valid_input){
-			$this->add_error("ungültige Eingabe : " . __METHOD__);
-			return false;
-		}
-		else if($pw != $pw2){
-			$this->add_error("die Passwörter stimmen nicht überein : " . __METHOD__);
+		if(!$valid_input OR $pw != $pw2){
+			$this->add_error("ungültige Eingabe");
 			return false;
 		}
 		else if($this->user_exists($username)){
@@ -137,7 +137,7 @@ class User extends Main{
 			//hash password
 			$password = password_hash($pw, PASSWORD_DEFAULT);
 			
-			//set usertype to 0 (visitor)
+			//set usertype to 0 (visitor status)
 			$usertype = "0";
 			
 			//insert new user
@@ -209,11 +209,11 @@ class User extends Main{
 	
 	/** 
 	 * Verifies the user's login status
+	 * @return boolean
 	 */
 	public function is_logged_in(){
 		
 		if(!isset($_SESSION['username'])){
-			$this->add_error("no session");
 			return false;
 		}else{
 		
@@ -225,21 +225,19 @@ class User extends Main{
 			//compare to the current session token
 			return ($recreate_token == $_SESSION['token']);
 		}	
-		
-		
 	}
 
 /* ===================================================================================== */
 
 	/** 
 	 * Verifies the user's admin status
+	 * @return boolean
 	 */
 	public function is_admin(){
 		
 		if($this->is_logged_in()){
 			return($_SESSION['usertype'] == "1");
 		}else{
-			$this->add_error("Administratorrechte benötigt");
 			return false;
 		}
 		

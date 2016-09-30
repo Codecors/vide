@@ -1,3 +1,13 @@
 .buildpath
 .project
 .settings
+www/lib/videos/*
+www/lib/thumbnails/*
+test.*
+design
+auth.txt
+setup.txt
+test_accounts.txt
+toDo.txt
+test.*
+www/lib/videostestupload.txt

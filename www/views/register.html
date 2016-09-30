@@ -4,15 +4,15 @@
 <form>
 	<div class="form-group">
 		<label for="username">Benutzername (5-20 Zeichen): </label>
-		<input type="text" name="username" id="username" required min-length="5" max-length="20" class="form-control" ng-model="userName">
+		<input type="text" name="username" id="username" required min-length="5" max-length="20" class="form-control" ng-model="registerForm.userName">
 	</div>
 	<div class="form-group">
 		<label for="password">Password (8-20 Zeichen): </label>
-		<input type="password" name="password" id="password" required min-length="8" max-length="20" class="form-control" ng-model="userPassword">
+		<input type="password" name="password" id="password" required min-length="8" max-length="20" class="form-control" ng-model="registerForm.userPassword">
 	</div>
 	<div class="form-group">
 		<label for="pw-repeat">Password wiederholen: </label>
-		<input type="password" name="pw-repeat" id="pw-repeat" required min-length="8" max-length="20" class="form-control" ng-model="passwordRepeat">
+		<input type="password" name="pw-repeat" id="pw-repeat" required min-length="8" max-length="20" class="form-control" ng-model="registerForm.passwordRepeat">
 	</div>
 	<div class="form-group">
 		<button type="button" class="form-control btn btn-primary" ng-click="registerUser()">Anmelden</button>

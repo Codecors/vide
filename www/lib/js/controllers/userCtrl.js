@@ -1,16 +1,18 @@
 angular.module("main").controller("userCtrl", function($scope, $window, paths, getDataService){
 	
+	$scope.loginForm = {};
+	
 	// sends login form input to backend
 	
 	$scope.loginUser = function(){
 		
 		var data = { "action": "loginUser",
 				"content": 	{
-					"username": $scope.userName,
-					"password": $scope.userPassword
+					"username": this.loginForm.userName,
+					"password": this.loginForm.userPassword
 				}
 		};
-			
+		
 		var login = getDataService.getData(data)
 		login.then(function(result){
 			$scope.msg.messages = result.messages;
@@ -26,28 +28,28 @@ angular.module("main").controller("userCtrl", function($scope, $window, paths, g
 	
 	$scope.registerUser = function(){
 		
-		if(this.userName.length > 20 || this.userName.length < 5){	
+		if(this.registerForm.userName.length > 20 || this.registerForm.userName.length < 5){	
 			alert("Der Benutzername muss 5-20 Zeichen lang sein");
 		}	
-		else if(!this.userName.match(/[a-zA-Z0-9_äöüß\-]/i)){
+		else if(!this.registerForm.userName.match(/[a-zA-Z0-9_äöüß\-]/i)){
 			alert("Der Benutzername enthält unerlaubte Sonderzeichen");
 		}
-		else if(this.userPassword.length > 20 || this.userPassword.length < 8){
+		else if(this.registerForm.userPassword.length > 20 || this.registerForm.userPassword.length < 8){
 			alert("Das Passwort muss 8-20 Zeichen lang sein");	
 		}
-		else if(!this.userPassword.match(/[a-zA-Z0-9_äöüß]/i)){
+		else if(!this.registerForm.userPassword.match(/[a-zA-Z0-9_äöüß]/i)){
 			alert("Das Passwort enthält unerlaubte Sonderzeichen");
 		}
-		else if(this.userPassword != this.passwordRepeat){
+		else if(this.registerForm.userPassword != this.registerForm.passwordRepeat){
 			alert("Die Passwörter stimmen nicht überein");
 		}
 		else{
 	
 			var data = {"action": "registerUser",
 					"content": 	{
-						"username": $scope.userName,
-						"password": $scope.userPassword,
-						"passwordRepeat": $scope.passwordRepeat
+						"username": this.registerForm.userName,
+						"password": this.registerForm.userPassword,
+						"passwordRepeat": this.registerForm.passwordRepeat
 					}
 			};
 			

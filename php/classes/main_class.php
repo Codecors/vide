@@ -65,29 +65,8 @@ class Main{
 /* ===================================================================================== */
 	
 	/**
-	 * provides the current errors or messages in JSON encoded format
-	 * @param string $type Errors, general messages or all messages
-	 * @return string
-	 */
-	public function export_msg($type){
-		
-		$messages = $this->all_messages;
-		
-		foreach($messages as $msg){
-			
-			
-			
-			
-		}
-	
-	}
-	
-	
-/* ===================================================================================== */
-	
-	/**
 	 * replaces German special characters in strings
-	 * @param string $string
+	 * @param string $input
 	 * @return string
 	 */
 	public function replace_umlauts($input){

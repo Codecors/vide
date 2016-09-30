@@ -1,7 +1,6 @@
 <?php
 
 class Upload extends Video{
-
 	
 	/**
 	 * upload class constructor
@@ -16,6 +15,14 @@ class Upload extends Video{
 		$this->files = $files;
 	}
 	
+	
+/* ===================================================================================== */
+	
+	/**
+	 * Extracts file type from a file name
+	 * @param string $file_name
+	 * @return string
+	 */
 	private function get_file_type($file_name){
 		$type = explode('.', $file_name);
 		$type = strtolower(end($type));
@@ -25,8 +32,10 @@ class Upload extends Video{
 /* ===================================================================================== */
 	
 	/**
-	 * validates upload form input
-	 * @return boolean
+	 * validates video title & description (upload form input)
+	 * @param string $title
+	 * @param string $desc
+	 * @return array
 	 */
 	private function validate_upload($title, $desc){
 		
@@ -41,6 +50,7 @@ class Upload extends Video{
 		}else{
 			$desc =  false;
 		}
+		
 		if($valid_title && $desc){
 			
 			$valid_input = array(
@@ -55,7 +65,7 @@ class Upload extends Video{
 /* ===================================================================================== */
 	
 	/**
-	 * Processes the input array for upload
+	 * Processes the $_FILES and $_POST arrays for upload
 	 * @param array $post
 	 * @param array $files
 	 * @return array
@@ -84,7 +94,7 @@ class Upload extends Video{
 		//get the date
 		$upload_date = date("d. m. Y");
 		
-		//combine variables to array for upload_video function
+		//combine variables to array for upload_video()
 		$upload_array = array(
 				'video_title'=> $video_title,
 				'video_desc' => $video_desc,
@@ -104,6 +114,7 @@ class Upload extends Video{
 		
 	/**
 	 * uploads video data & video file to db and directory
+	 * @param boolean $is_admin
 	 */
 	public function upload_video($is_admin){
 		
@@ -111,8 +122,7 @@ class Upload extends Video{
 			$this->add_error("Administratorzugang benötigt");
 			return false;
 		}else{
-		
-		
+				
 			$post = $this->post;
 			$files= $this->files;
 			
@@ -126,7 +136,6 @@ class Upload extends Video{
 			$video_upload = move_uploaded_file($tmp, $destination);
 			
 			if(!$video_upload){
-				
 				$this->add_error('Die Video-Datei konnte nicht hochgeladen werden');
 				return false;
 			}else{
@@ -146,7 +155,6 @@ class Upload extends Video{
 				$data_upload = $db->addRow($query, $params);
 				
 				if(!$data_upload){
-					
 					$this->add_error('Die Daten konnten nicht zur Datenbank hinzugefügt werden');
 					return false;
 				}else{
