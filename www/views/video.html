@@ -10,11 +10,5 @@
  <div class="admin-area" ng-if="user.isAdmin">
 	<a href="#/edit-video/{{videoData.video_id}}" role="button" class="btn btn-primary">Video bearbeiten</a>
 	<button type="button" class="btn btn-danger" ng-click="deleteVideo()">Video löschen</button>
-	<div ng-repeat="msg in messages">
-		<div ng-class="msg.class">
-			{{msg.text}}
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		</div>
-	</div>
 </div>
 <a href="http://localhost/video-cms/www/#/videos" role="button" class="btn btn-default">zur Video-Übersicht</a>
