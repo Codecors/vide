@@ -1,4 +1,4 @@
-Display site for video clips (private project for a family member). Work in progress.
+<b>Work in progress:</b>
 
 
 Up and running:
