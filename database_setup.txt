@@ -1,0 +1,18 @@
+CREATE TABLE videos (
+	video_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	video_title varchar(50) NOT NULL,
+	video_desc text,
+	video_rating int NOT NULL DEFAULT "0",
+	video_file varchar(50),
+	thumbnail_file varchar(50),
+	video_public int NOT NULL DEFAULT "0",
+	video_upload_date varchar(12) NOT NULL
+);
+
+CREATE TABLE users(
+	user_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	user_name varchar(20) NOT NULL,
+	user_password varchar(200) NOT NULL,
+	user_type int NOT NULL DEFAULT "0"
+);
+	
