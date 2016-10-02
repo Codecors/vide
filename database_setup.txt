@@ -15,4 +15,18 @@ CREATE TABLE users(
 	user_password varchar(200) NOT NULL,
 	user_type int NOT NULL DEFAULT "0"
 );
+
+CREATE TABLE settings(
+	settings_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	settings_name varchar(20) NOT NULL,
+	settings_type varchar(20) NOT NULL,
+	settings_content varchar(200)
+);
+
+
+
+
+
+
+
 	
