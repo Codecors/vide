@@ -7,7 +7,7 @@ main.config(function($routeProvider){
 		templateUrl: "views/home.html"
 	})
 	.when("/videos", {
-		templateUrl: "views/videolist.html",
+		templateUrl: "views/videos.html",
 		controller: "videoListCtrl"
 	})
 	.when("/video/:param", {
@@ -41,6 +41,9 @@ main.config(function($routeProvider){
 	.when("/register", {
 		templateUrl: "views/register.html",
 		controller: "userCtrl"
+	})
+	.when("/testing", {
+		templateUrl: "views/test.html"
 	});
 
 })

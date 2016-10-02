@@ -1,0 +1,8 @@
+videos table
+
+CREATE TABLE videos (
+video_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+video_title varchar(50) NOT NULL,
+video_desc text(300),
+video_stars int
+);

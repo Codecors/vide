@@ -5,10 +5,9 @@
 auth.txt
 design/
 */test.*
-*/test.*
-setup.txt
 test_accounts.txt
 toDo.txt
 www/lib/thumbnails/*
 www/lib/videos/*
 www/lib/videostestupload.txt
+www/includes
