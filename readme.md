@@ -4,9 +4,10 @@
 Up and running:
 - user registration/login/session management
 - file upload/display/edit/delete
+- basic frontend design
 
 To do:
-- frontend design (currently v. basic unfinished Bootstrap)
+- get video player to work in www/views/video.html
 - finish the rating sytem (add select element)
 - error message for failed ajax calls in controllers
 - add. security measures (form tokens, php settings, turn off error reporting, .htaccess, spam trap)
