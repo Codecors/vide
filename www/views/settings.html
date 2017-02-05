@@ -1,0 +1,24 @@
+<header class="page-header">
+	<h1>Einstellungen ändern</h1>
+</header>
+<div ng-if(user.isAdmin)>
+	<form>
+		<div class="form-group">
+			<label for="videoSize">Max. Größe für Videodateien (MB):</label>
+			<input id="videoSize" type="number" type="number" min="10" max="100" step="10" class="form-control" ng-model="settings.max_video_file_size">
+		</div>
+		<div class="form-group">
+			<label for="imgSize">Max. Größe für Thumbnail-Dateien (MB)</label>
+			<input id="videoSize" type="number" min="10" max="100" step="10" class="form-control" ng-model="settings.max_img_file_size">
+		</div>
+		<div class="form-group">
+			<label for="videoSize">Erlaubte Video-Dateiformate (bitte mit Komma trennen):</label>
+			<input id="videoSize" type="text" class="form-control" ng-model="settings.allowed_video_formats">
+		</div>
+		<div class="form-group">
+			<label for="videoSize">Erlaubte Bild-Dateiformate (bitte mit Komma trennen):</label>
+			<input id="videoSize" type="text" class="form-control" ng-model="settings.allowed_img_formats">
+		</div>
+		<button type="button" class="btn btn-primary" ng-click="changeSettings()">Änderungen speichern</button>
+	</form>
+</div>

@@ -1,0 +1,15 @@
+18. 10. 2016 16:57:19 - Email::sanitize_input\r\n\r\nungültige Eingabe18. 10. 2016 18:34:32 - Email::send_email - Fehler: Beim Versenden der Nachricht ist ein Fehler aufgetreten
+
+---------------------------
+
+18. 10. 2016 18:35:56 - Email::send_email - Fehler: Beim Versenden der Nachricht ist ein Fehler aufgetreten
+
+---------------------------
+
+06. 01. 2017 10:33:57 - User::login_user - Fehler: Passwort falsch
+
+---------------------------
+
+22. 01. 2017 17:23:39 - User::login_user - Fehler: Passwort falsch
+
+---------------------------
