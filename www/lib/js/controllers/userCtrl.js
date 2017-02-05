@@ -5,7 +5,6 @@ angular.module("main").controller("userCtrl", function($scope, $window, paths, g
 	// sends login form input to backend
 	
 	$scope.loginUser = function(){
-		
 		var data = { "action": "loginUser",
 				"content": 	{
 					"username": this.loginForm.userName,
@@ -13,7 +12,7 @@ angular.module("main").controller("userCtrl", function($scope, $window, paths, g
 				}
 		};
 		
-		var login = getDataService.getData(data)
+		var login = getDataService.getData(data);
 		login.then(function(result){
 			$scope.msg.messages = result.messages;
 			if(result.result){

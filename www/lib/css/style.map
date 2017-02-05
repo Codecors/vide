@@ -3,7 +3,7 @@
 	"file": "../scss/style.css",
 	"sources": [
 		"../scss/style.scss",
-		"../scss/_variables.scss",
+		"../scss/_custom_variables.scss",
 		"../scss/_general.scss",
 		"../scss/_header.scss",
 		"../scss/_nav.scss",
@@ -11,14 +11,14 @@
 		"../scss/_footer.scss"
 	],
 	"sourcesContent": [
-		"@import 'variables';\r\n@import 'general';\r\n@import 'header';\r\n@import 'nav';\r\n@import 'content';\r\n@import 'footer';",
-		"",
-		"body{\r\n\tpadding-top: 70px;\r\n\tpadding-bottom: 70px;\r\n}\r\n.form-control {\r\n    height: auto;\r\n}\r\na{\r\n\tcursor: pointer;\r\n}\r\n/* testing */\r\n.half{\r\n\tmargin: -2px;\r\n\tborder:  2px solid #666;\r\n}",
-		"",
-		"",
-		".thumbnail-main{\r\n\twidth: 90%;\r\n}\r\n.thumbnail-list{\r\n\tmax-width: 300px;\r\n\tmax-height: 200px;\r\n}\r\n.admin-area{\r\n\tbackground-color: #ddd;\r\n}",
-		""
+		"@import 'custom_variables';\r\n@import 'general';\r\n@import 'header';\r\n@import 'nav';\r\n@import 'content';\r\n@import 'footer';",
+		"$main_color: #ff6600;\r\n/* #000099; */\r\n$secondary_color: #666;\r\n\r\n$nav_color: #000;\r\n\r\n$header_font: 'Amatica SC', cursive;",
+		"/* --------------- repeating elements --------------- */\r\na{\r\n\tcursor: pointer;\r\n\tcolor: $main_color\r\n}\r\n.form-control {\r\n    height: auto;\r\n}\r\n.navbar-default{\r\n\tbackground: #000;\r\n}\r\n.btn-primary{\r\n\tbackground: #000;\r\n\tcolor: $main_color;\r\n}\r\n.btn-primary:hover{\r\n\tcolor: #fff;\r\n\tbackground: #000;\r\n}\r\n/* --------------- outer structure --------------- */\r\nbody{\r\n\tmargin: 0 auto;\r\n\tpadding-top: 70px;\r\n\tpadding-bottom: 70px;\r\n\tfont-family: 'Montserrat', sans-serif;\r\n}",
+		"#site-header{\r\n\tcolor: #fff;\r\n}\t\r\n#site-header h1{\r\n\tfont-family: $header_font;\r\n\tbackground-color: $main_color;\r\n\t/* margin-top: 0; */\r\n\t/* padding: 1em; */\r\n}\t\r\n#site-header h3{\r\n\tcolor: #fff;\r\n\tbackground-color: $secondary_color;\r\n}",
+		".navbar-brand{\r\n\tpadding: 0;\r\n}\r\n.navbar-brand h1{\r\n\tfont-family: $header_font;\r\n\tcolor: $main_color;\r\n\tmargin: 0 10px;\r\n}\r\n#site-nav span.icon-bar{\r\n\tbackground-color: $main_color;\r\n}\r\n#site-nav ul li:active{\r\n\tbackground-color: $nav_color;\r\n\tborder: 1px dotted #fff;\r\n}\r\n#site-nav ul li a{\r\n\tcolor: #fff;\r\n}\r\n.navbar-right .fa{\r\n\tcolor: $main_color;\r\n}\r\n.dropdown-menu{\r\n\tbackground-color: $nav_color;\r\n}\r\n#site-nav .navbar-toggle:hover,\r\n#site-nav .navbar-toggle:focus {\r\n\tbackground-color: $main_color;\r\n\tspan.icon-bar{\r\n\t\tbackground-color: #000;\r\n\t}\t\r\n}\r\n ",
+		".thumbnail-main{\r\n\twidth: 90%;\r\n}\r\n.thumbnail-list{\r\n\tmax-width: 300px;\r\n\tmax-height: 200px;\r\n}\r\n.rating-star{\r\n\tdisplay: inline-block;\r\n}\r\n.admin-area{\r\n\ttext-align: center;\r\n\tbackground-color: #ddd;\r\n}",
+		"#site-footer a{\r\n\tcolor: $main_color;\r\n}"
 	],
-	"mappings": ";AEAA,AAAA,IAAI,CAAA;EACH,WAAW,EAAE,IAAK;EAClB,cAAc,EAAE,IAAK;CACrB;;;AACD,AAAA,aAAa,CAAC;EACV,MAAM,EAAE,IAAK;CAChB;;;AACD,AAAA,CAAC,CAAA;EACA,MAAM,EAAE,OAAQ;CAChB;;AACD,aAAa;;AACb,AAAA,KAAK,CAAA;EACJ,MAAM,EAAE,IAAK;EACb,MAAM,EAAG,cAAe;CACxB;;;AGdD,AAAA,eAAe,CAAA;EACd,KAAK,EAAE,GAAI;CACX;;;AACD,AAAA,eAAe,CAAA;EACd,SAAS,EAAE,KAAM;EACjB,UAAU,EAAE,KAAM;CAClB;;;AACD,AAAA,WAAW,CAAA;EACV,gBAAgB,EAAE,IAAK;CACvB",
+	"mappings": "ACCA,cAAc;ACDd,wDAAwD;;AACxD,AAAA,CAAC,CAAA;EACA,MAAM,EAAE,OAAQ;EAChB,KAAK,EDHO,OAAO;CCInB;;;AACD,AAAA,aAAa,CAAC;EACV,MAAM,EAAE,IAAK;CAChB;;;AACD,AAAA,eAAe,CAAA;EACd,UAAU,EAAE,IAAK;CACjB;;;AACD,AAAA,YAAY,CAAA;EACX,UAAU,EAAE,IAAK;EACjB,KAAK,EDbO,OAAO;CCcnB;;;AACD,AAAY,YAAA,AAAA,MAAM,CAAA;EACjB,KAAK,EAAE,IAAK;EACZ,UAAU,EAAE,IAAK;CACjB;;AACD,qDAAqD;;AACrD,AAAA,IAAI,CAAA;EACH,MAAM,EAAE,MAAO;EACf,WAAW,EAAE,IAAK;EAClB,cAAc,EAAE,IAAK;EACrB,WAAW,EAAE,wBAAyB;CACtC;;;ACzBD,AAAA,YAAY,CAAA;EACX,KAAK,EAAE,IAAK;CACZ;;;AACD,AAAa,YAAD,CAAC,EAAE,CAAA;EACd,WAAW,EFEE,YAAY,EAAE,OAAO;EEDlC,gBAAgB,EFLJ,OAAO;EEMnB,oBAAoB;EACpB,mBAAmB;CACnB;;;AACD,AAAa,YAAD,CAAC,EAAE,CAAA;EACd,KAAK,EAAE,IAAK;EACZ,gBAAgB,EFTC,IAAI;CEUrB;;;ACZD,AAAA,aAAa,CAAA;EACZ,OAAO,EAAE,CAAE;CACX;;;AACD,AAAc,aAAD,CAAC,EAAE,CAAA;EACf,WAAW,EHEE,YAAY,EAAE,OAAO;EGDlC,KAAK,EHLO,OAAO;EGMnB,MAAM,EAAE,MAAO;CACf;;;AACD,AAAc,SAAL,CAAC,IAAI,AAAA,SAAS,CAAA;EACtB,gBAAgB,EHTJ,OAAO;CGUnB;;;AACD,AAAe,SAAN,CAAC,EAAE,CAAC,EAAE,AAAA,OAAO,CAAA;EACrB,gBAAgB,EHRL,IAAI;EGSf,MAAM,EAAE,eAAgB;CACxB;;;AACD,AAAgB,SAAP,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAA;EAChB,KAAK,EAAE,IAAK;CACZ;;;AACD,AAAc,aAAD,CAAC,GAAG,CAAA;EAChB,KAAK,EHnBO,OAAO;CGoBnB;;;AACD,AAAA,cAAc,CAAA;EACb,gBAAgB,EHlBL,IAAI;CGmBf;;;AACD,AAAwB,SAAf,CAAC,cAAc,AAAA,MAAM;AAC9B,AAAwB,SAAf,CAAC,cAAc,AAAA,MAAM,CAAC;EAC9B,gBAAgB,EH1BJ,OAAO;CG8BnB;;;AAND,AAGK,SAHI,CAAC,cAAc,AAAA,MAAM,CAG7B,IAAI,AAAA,SAAS;AAFd,AAEK,SAFI,CAAC,cAAc,AAAA,MAAM,CAE7B,IAAI,AAAA,SAAS,CAAA;EACZ,gBAAgB,EAAE,IAAK;CACvB;;;AC7BF,AAAA,eAAe,CAAA;EACd,KAAK,EAAE,GAAI;CACX;;;AACD,AAAA,eAAe,CAAA;EACd,SAAS,EAAE,KAAM;EACjB,UAAU,EAAE,KAAM;CAClB;;;AACD,AAAA,YAAY,CAAA;EACX,OAAO,EAAE,YAAa;CACtB;;;AACD,AAAA,WAAW,CAAA;EACV,UAAU,EAAE,MAAO;EACnB,gBAAgB,EAAE,IAAK;CACvB;;;ACbD,AAAa,YAAD,CAAC,CAAC,CAAA;EACb,KAAK,ELDO,OAAO;CKEnB",
 	"names": []
 }

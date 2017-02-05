@@ -119,7 +119,7 @@ class Upload extends Video{
 	public function upload_video($is_admin){
 		
 		if(!$is_admin){
-			$this->add_error("Administratorzugang benötigt");
+			$this->add_error(__METHOD__, "Administratorzugang benötigt");
 			return false;
 		}else{
 				
@@ -136,26 +136,27 @@ class Upload extends Video{
 			$video_upload = move_uploaded_file($tmp, $destination);
 			
 			if(!$video_upload){
-				$this->add_error('Die Video-Datei konnte nicht hochgeladen werden');
+				$this->add_error(__METHOD__, 'Die Video-Datei konnte nicht hochgeladen werden');
 				return false;
 			}else{
 					
 				//upload data to db
 				$db = new DB();
 				
-				$query = "INSERT INTO videos (video_title, video_desc, video_file, video_upload_date) VALUES (?,?,?,?)";
+				$query = "INSERT INTO videos (video_title, video_desc, video_file, video_upload_date, video_type) VALUES (?,?,?,?,?)";
 				
 				$params = array(
 						$input['video_title'],
 						$input['video_desc'],
 						$input['video_file'],
-						$input['video_upload_date']
+						$input['video_upload_date'],
+						$input['video_file_type']
 				);
 				
 				$data_upload = $db->addRow($query, $params);
 				
 				if(!$data_upload){
-					$this->add_error('Die Daten konnten nicht zur Datenbank hinzugefügt werden');
+					$this->add_error(__METHOD__, 'Die Daten konnten nicht zur Datenbank hinzugefügt werden');
 					return false;
 				}else{
 					$new_row = $db->getRow("SELECT LAST_INSERT_ID()", []);

@@ -11,6 +11,7 @@ angular.module("main").controller("videoListCtrl", function($scope, $window, $ht
 		
 		var call = getDataService.getData(toSend);
 		call.then(function(result){
+			
 			if(result.data.length > 0){
 				$scope.videoList = JSON.parse(result.data);
 			}

@@ -15,15 +15,24 @@ CREATE TABLE users(
 	user_password varchar(200) NOT NULL,
 	user_type int NOT NULL DEFAULT "0"
 );
-
 CREATE TABLE settings(
-	settings_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	settings_name varchar(20) NOT NULL,
-	settings_type varchar(20) NOT NULL,
-	settings_content varchar(200)
+ 	max_video_file_size int,
+ 	max_img_file_size int,
+ 	allowed_video_formats varchar(100),
+ 	allowed_img_formats varchar(100)
+ );
+
+CREATE TABLE ratings(
+	rating_id int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+	user_id int NOT NULL,
+	video_id int NOT NULL,
+	rating int NOT NULL,
+	time varchar(20) NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
+	ON DELETE CASCADE ON UPDATE NO ACTION,
+	FOREIGN KEY (video_id) REFERENCES videos(video_id)
+	ON DELETE CASCADE ON UPDATE NO ACTION
 );
-
-
 
 
 

@@ -24,11 +24,11 @@ class User extends Main{
 		)));
 		
 		if(!$valid_username){
-			$this->add_error("falscher Benutzername: " . __METHOD__);
+			$this->add_error(__METHOD__, "falscher Benutzername: " . __METHOD__);
 			return false;
 		}
 		else if(!$valid_pw){
-			$this->add_error("falsches Passwort" . __METHOD__);
+			$this->add_error(__METHOD__, "falsches Passwort" . __METHOD__);
 			return false;
 		}
 		else{
@@ -78,7 +78,7 @@ class User extends Main{
 	 	$match = password_verify($password, $stored_pw);
 	 	
 	 	if(!$match){
-	 		$this->add_error("falsches Passwort" . __METHOD__);
+	 		$this->add_error(__METHOD__, "falsches Passwort" . __METHOD__);
 	 		return false;
 	 	}else{
 	 		return true;
@@ -92,7 +92,7 @@ class User extends Main{
 	 * @param string $username
 	 * @param string $user_type
 	 */
-	private function set_user_session($username, $user_type){
+	private function set_user_session($user_id, $user_type){
 		
 		$session_id = uniqid('', true);
 		$token = md5($session_id . AUTH_SALT);
@@ -104,7 +104,7 @@ class User extends Main{
 		$_SESSION['token'] = $token;	
 		
 		//set session user
-		$_SESSION['username'] = $username;
+		$_SESSION['user_id'] = $user_id;
 				
 		//set session user type
 		$_SESSION['usertype'] = $user_type;
@@ -125,11 +125,11 @@ class User extends Main{
 		$valid_input = $this->validate_user_info($username, $pw);
 		
 		if(!$valid_input OR $pw != $pw2){
-			$this->add_error("ungültige Eingabe");
+			$this->add_error(__METHOD__, "ungültige Eingabe");
 			return false;
 		}
 		else if($this->user_exists($username)){
-			$this->add_error("Dieser Benutzername wird bereits verwendet. Bitte wählen Sie einen anderen.");
+			$this->add_error(__METHOD__, "Dieser Benutzername wird bereits verwendet. Bitte wählen Sie einen anderen.");
 			return false;
 		}
 		else{
@@ -148,7 +148,7 @@ class User extends Main{
 			$register = $db->addRow($query, $params);
 			
 			if(!$register){
-				$this->add_error("Eintragen in die Datenbank fehlgeschlagen");
+				$this->add_error(__METHOD__, "Eintragen in die Datenbank fehlgeschlagen");
 				return false;
 			}
 			else{
@@ -167,12 +167,13 @@ class User extends Main{
 	 * @return boolean
 	 */
 	public function login_user($username, $password){
-				
+		
 		//validate input
 		$valid_input = $this->validate_user_info($username, $password);
 		
 		if(!$valid_input){
-			$this->add_error("Login fehlgeschlagen");
+			
+			$this->add_error(__METHOD__, "Login fehlgeschlagen");
 			return false;
 		}
 		else{
@@ -189,16 +190,20 @@ class User extends Main{
 			
 			//check if user exists
 			if(!$user_data){
-				$this->add_error("Benutzername falsch");
+				
+				$this->add_error(__METHOD__, "Benutzername falsch");
 				return false;
 			}
 			elseif(!$password_check){
-				$this->add_error("Passwort falsch");
+				
+				$this->add_error(__METHOD__, "Passwort falsch");
 				return false;
 			}
 			//set user session
 			else{
-				$set_session = $this->set_user_session($username, $user_data['user_type']);
+				
+				$user_id = $user_data['user_id'];
+				$set_session = $this->set_user_session($user_id, $user_data['user_type']);
 				$this->add_message("Hallo " . $username . "!");
 				return true;
 			}	
@@ -213,11 +218,11 @@ class User extends Main{
 	 */
 	public function is_logged_in(){
 		
-		if(!isset($_SESSION['username'])){
+		if(!isset($_SESSION['user_id'])){
 			return false;
 		}else{
 		
-			$username = $_SESSION['username'];
+			$user_id = $_SESSION['user_id'];
 			
 			//recreate session token with the stored SALT
 			$recreate_token = md5($_SESSION['ID'] . AUTH_SALT);

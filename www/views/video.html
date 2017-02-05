@@ -2,13 +2,38 @@
 <h1>{{videoData.video_title}}</h1>
 </header>
 
-<img class="thumbnail thumbnail-main" src="{{thumbSrc}}" alt="{{videoData.video_title}}_titelbild">
-<p>
-	{{videoData.video_desc}}
-</p>
-<small>Hochgeladen am {{videoData.video_upload_date}}</small>
+<video class="single-display" width="80%" controls>
+	<source ng-src="./lib/videos/{{videoData.video_url}}" type="video/{{videoData.video_type}}">
+	In Ihrem Browser ist das Anzeigen von Videos dieser Art nicht möglich.
+</video>
+
+<div class="row">
+	<div class="col-md-6">
+		<p>{{videoData.video_desc}}</p>
+	</div>
+	<div class="col-md-6">
+		<small>Hochgeladen am {{videoData.video_upload_date}}</small>
+		<p>rating: {{videoData.video_rating}}</p>
+		
+<!-- 		<div id="rating"> -->
+<!-- 			<div class="rating-star" ng-click="rating.rateVideo(1)"><span ng-class="[ratings.]"></span></div> -->
+<!-- 			<div class="rating-star" ng-click="rating.rateVideo(2)"><span ng-class="{{ratings[2].ratingClass}}"></span></div> -->
+<!-- 			<div class="rating-star" ng-click="rating.rateVideo(3)"><span ng-class="{{ratings[3].ratingClass}}"></span></div> -->
+<!-- 			<div class="rating-star" ng-click="rating.rateVideo(4)"><span ng-class="{{ratings[4].ratingClass}}"></span></div> -->
+<!-- 			<div class="rating-star" ng-click="rating.rateVideo(5)"><span ng-class="{{ratings[5].ratingClass}}"></span></div> -->
+<!-- 		</div>		 -->
+		
+	</div>
+</div>
+<div>test: {{videoData}}</div>
+
+
  <div class="admin-area" ng-if="user.isAdmin">
 	<a href="#/edit-video/{{videoData.video_id}}" role="button" class="btn btn-primary">Video bearbeiten</a>
 	<button type="button" class="btn btn-danger" ng-click="deleteVideo()">Video löschen</button>
+	<div class="input-group">
+		<label for="public">Video öffentlich anzeigen?</label>
+		<input type="checkbox" class="form-control" ng-model="videoData.video_public" name="public" ng-change="setPublic()" ng-true-value="1" ng-false-value="0">
+	</div>
 </div>
 <a href="http://localhost/video-cms/www/#/videos" role="button" class="btn btn-default">zur Video-Übersicht</a>

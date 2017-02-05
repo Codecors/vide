@@ -1,0 +1,13 @@
+#site-header{
+	color: #fff;
+}	
+#site-header h1{
+	font-family: $header_font;
+	background-color: $main_color;
+	/* margin-top: 0; */
+	/* padding: 1em; */
+}	
+#site-header h3{
+	color: #fff;
+	background-color: $secondary_color;
+}

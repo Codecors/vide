@@ -69,6 +69,36 @@ if(!empty($_POST)){
 			$data = [];
 			$messages = $video->all_messages;
 			break;
+		case 'changeRating':
+			$video = new Video();
+			$result = $video->change_rating($content, $is_logged_in);
+			$data = [];
+			$messages = $video->all_messages;
+			break;
+		case 'setPublic':
+			$video = new Video();
+			$result = $video->set_public($content["video_id"], $content["video_public"], $is_admin);
+			$data = [];
+			$messages = $video->all_messages;
+			break;
+		case 'sendEmail':
+			$email = new Email();
+			$result = $email->send_email($content);
+			$data = [];
+			$messages = $email->all_messages;
+			break;
+		case 'getSettings':
+			$settings = new Settings();
+			$data = $settings->get_settings();
+			$result = ($data != false);
+			$messages = $settings->all_messages;
+			break;
+		case 'changeSettings':
+			$settings = new Settings();
+			$data = [];
+			$result = $settings->change_settings();
+			$messages = $settings->all_messages;
+			break;
 	}
 	
 	$reply = array(

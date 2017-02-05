@@ -1,0 +1,32 @@
+.navbar-brand{
+	padding: 0;
+}
+.navbar-brand h1{
+	font-family: $header_font;
+	color: $main_color;
+	margin: 0 10px;
+}
+#site-nav span.icon-bar{
+	background-color: $main_color;
+}
+#site-nav ul li:active{
+	background-color: $nav_color;
+	border: 1px dotted #fff;
+}
+#site-nav ul li a{
+	color: #fff;
+}
+.navbar-right .fa{
+	color: $main_color;
+}
+.dropdown-menu{
+	background-color: $nav_color;
+}
+#site-nav .navbar-toggle:hover,
+#site-nav .navbar-toggle:focus {
+	background-color: $main_color;
+	span.icon-bar{
+		background-color: #000;
+	}	
+}
+ 

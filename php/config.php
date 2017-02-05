@@ -1,5 +1,4 @@
 <?php 
-
 /**
  * error reporting level
  */
@@ -33,6 +32,15 @@ $thumbnail_path = ROOT . 'www/lib/thumbnails/';
 define('THUMBS_DIR', $thumbnail_path);
 
 //contact form email address
+define("CONTACT_EMAIL", "test@test.de");
+
+//error log file
+$error_log_path = ROOT . 'logs/error_log.txt';
+define("ERROR_LOG", $error_log_path);
+
+//contact form message log file
+$contact_log_path = ROOT . 'logs/contactform_log.txt';
+define("CONTACT_LOG", $contact_log_path);
 
 //form token
 define("FORM_TOKEN", "0c2d7970ed846b6596925b6ce2dd5b9c");

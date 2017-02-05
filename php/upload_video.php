@@ -5,6 +5,9 @@ require_once 'load.php';
 $user = new User();
 $is_admin = $user->is_admin();
 
+var_dump($_POST);
+var_dump($_FILES);
+
 if(!empty($_POST) && !empty($_FILES)){
 	
 	$input = new Upload($_POST, $_FILES);

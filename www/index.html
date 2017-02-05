@@ -6,41 +6,20 @@
 	<title>VideoCMS</title>
 	<link href="lib/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="lib/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+	<link href="lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="lib/css/style.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Amatica+SC|Montserrat" rel="stylesheet"> 
 </head>
 <body ng-app="main">
 
 <div class="container" ng-controller="basicCtrl">
 
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-		  <div class="navbar-header">
-		  	<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#site-nav">
-		  		<span class="sr-only">Navigation</span>
-		  		<span class="icon-bar"></span>
-		  		<span class="icon-bar"></span>
-		  		<span class="icon-bar"></span>
-		  	</button>
-		  </div>
-		  <div class="collapse navbar-collapse" id="site-nav">
-		    <ul class="nav navbar-nav">
-		    	<li><a href="#/">Home</a>
-		    	<li><a href="#/videos">Videos</a>
-		    	<li><a href="#/info">Info</a>
-		    	<li><a href="#/kontakt">Kontakt</a>
-		    	<li ng-if="!user.isLoggedIn"><a href="#/login">Login</a></li>
-		    	<li ng-if="user.isLoggedIn" ng-click="logoutUser()"><a>Logout</a></li>
-		    	<li class="dropdown" ng-if="user.isAdmin">
-		    		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
-		    		<ul class="dropdown-menu">
-		    			<li><a href="#/upload">Video hochladen</a></li>
-		    			<li><a href="#/settings">Einstellungen ändern</a></li>
-		    		</ul>
-		    	</li>
-		    </ul>
-		  </div>
-	  </div>
-	</nav>
+	<div ng-include src="'./includes/nav.html'"></div>
+
+
+	
+	
+	
 	<div id="main-content" class="container-fluid">
 		<div ng-view></div>
 	</div>
@@ -50,19 +29,9 @@
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		</div>
 	</div>
+<div ng-include src="'./includes/footer.html'"></div>	
 	
-	<footer id="site-footer">
-		<nav class="navbar navbar-default navbar-fixed-bottom">
-		  <div class="container">
-		    	<div class="navbar-text pull-left">
-		    		<a href="#/impressum">Impressum</a>
-		    	</div>
-		    	<div class="navbar-text pull-right">
-		    		<a href="#/datenschutz">Datenschutz</a>
-		    	</div>
-		  </div>
-		</nav> 
-	</footer>
+
 
 </div> <!-- /#container -->
 
@@ -78,5 +47,7 @@
 <script src="lib/js/controllers/userCtrl.js" type="text/javascript"></script>
 <script src="lib/js/controllers/videoCtrl.js" type="text/javascript"></script>
 <script src="lib/js/controllers/videolistCtrl.js" type="text/javascript"></script>
+<script src="lib/js/controllers/contactCtrl.js" type="text/javascript"></script>
+<script src="lib/js/controllers/settingsCtrl.js" type="text/javascript"></script>
 </body>
 </html>

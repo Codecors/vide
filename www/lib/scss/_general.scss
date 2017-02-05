@@ -1,15 +1,26 @@
-body{
-	padding-top: 70px;
-	padding-bottom: 70px;
+/* --------------- repeating elements --------------- */
+a{
+	cursor: pointer;
+	color: $main_color
 }
 .form-control {
     height: auto;
 }
-a{
-	cursor: pointer;
+.navbar-default{
+	background: #000;
 }
-/* testing */
-.half{
-	margin: -2px;
-	border:  2px solid #666;
+.btn-primary{
+	background: #000;
+	color: $main_color;
+}
+.btn-primary:hover{
+	color: #fff;
+	background: #000;
+}
+/* --------------- outer structure --------------- */
+body{
+	margin: 0 auto;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	font-family: 'Montserrat', sans-serif;
 }

@@ -23,7 +23,12 @@ main.config(function($routeProvider){
 		controller: "videoCtrl"
 	})
 	.when("/kontakt", {
-		templateUrl: "views/kontakt.html"
+		templateUrl: "views/kontakt.html",
+		controller: "contactCtrl"
+	})
+	.when("/einstellungen", {
+		templateUrl: "views/settings.html",
+		controller: "settingsCtrl"
 	})
 	.when("/datenschutz", {
 		templateUrl: "views/datenschutz.html"

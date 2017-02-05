@@ -3,12 +3,23 @@ angular.module("main").controller("videoCtrl", function($scope, $location, $wind
 	//get video id when single video page is loaded
 	$scope.video_id = getIdService.getID($location.path());
 	
+	// rating
+	$scope.ratings = [];
+	
 /* ===================================================================================== */	
 	
 	//load video data when single video page is loaded
 	$scope.videoData = [];
-	
+
+
 	$scope.getVideoData = function(){
+		
+//		var i;
+//		
+//		for(i=0;i<6;i++){
+//			
+//			$scope.ratings[i].ratingClass = "glyphicon glyphicon-star-empty";
+//		}
 				
 		var toSend = {"action" : "getVideo",
 					"content" : {
@@ -28,6 +39,13 @@ angular.module("main").controller("videoCtrl", function($scope, $location, $wind
 				$scope.thumbSrc = paths.thumbsDir + $scope.videoData['thumbnail_file'];
 				$scope.isAdmin = result.isAdmin;
 				$scope.msg.messages = result.messages;
+				
+//				var rated = $scope.videoData['video_rating'];
+//				var i;
+//				for(i=0; i < rating; i++){
+//					$scope.ratings[i].ratingClass = "glyphicon glyphicon-star";
+//					console.log(i);
+//				}
 			}
 		});
 	}
@@ -35,7 +53,65 @@ angular.module("main").controller("videoCtrl", function($scope, $location, $wind
 	$scope.getVideoData();
 	
 /* ===================================================================================== */
+
+	//rating class
+//	$scope.rating.ratingClass = function(rated){
+//		
+//		var set_rating = "ratingClass_" + rated;
+//		return set_rating;
+//		
+//	}
 	
+	//change video rating
+//	$scope.rateVideo = function(rated){
+//		
+//		$scope.videoData['video_rating'] = rated;
+//		
+//		for(i = 1; i < parseInt(rated); i++){
+//			
+//			$scope.ratingClass[i] = "glyphicon glyphicon-star-empty";
+//			
+//		}
+//		
+//		var toSend = {
+//				"action" : "changeRating",
+//				"content" : {
+//					"video_id" : this.videoID,
+//					"newRating" : this.videoData['video_rating']
+//				}
+//		};
+//		
+//		var call = getDataService.getData(toSend);
+//		call.then(function(result){
+//			console.log(result);
+//			$scope.msg.messages = result.messages;
+//		});
+//		
+//	} 
+
+/* ===================================================================================== */	
+	
+	//set video to public/private
+	$scope.setPublic = function(){
+		
+		var toSend = {
+				"action" : "setPublic",
+				"content" : {
+					"video_id" : this.videoData['video_id'],
+					"video_public" : this.videoData['video_public']
+				}
+		};
+		
+		var call = getDataService.getData(toSend);
+		call.then(function(result){
+			console.log(result);
+			$scope.msg.messages = result.messages;
+		});
+		
+	} 
+	
+
+/* ===================================================================================== */		
 //	send edited video data to db
 	
 	$scope.sendEditedData = function(){

@@ -8,7 +8,6 @@ Up and running:
 To do:
 - frontend design (currently v. basic unfinished Bootstrap)
 - finish the rating sytem (add select element)
-- allow admin to set videos to private (add checkbox element to edit form)
 - error message for failed ajax calls in controllers
 - add. security measures (form tokens, php settings, turn off error reporting, .htaccess, spam trap)
 - integrate Video::change_thumbnail into frontend
