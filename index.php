@@ -5,4 +5,5 @@ $content = file_get_contents("https://p-def1.pcloud.com/cfZAEHSMkZTdeXMkZTvUxZZe
 $fp = fopen("image.mp4", "w");
 fwrite($fp, $content);
 fclose($fp);
+echo 'hope it\'s done';
 ?>
